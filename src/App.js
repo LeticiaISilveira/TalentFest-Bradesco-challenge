@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-  const [dados, setDados] = useState("");
+  const [dados, setDados] = useState([]);
 
 let dadosApi = "https://economia.awesomeapi.com.br/all/";
 useEffect(() => {
@@ -10,14 +10,20 @@ useEffect(() => {
     .then(res => res.json())
     .then(res => setDados(res))
   }, []);
+  
 
-  // const array = [dados];
-  //   console.log(array.map((elem) => elem))
+  const values = Object.values(dados)
+  console.log(values.map((item) => item))
   return (
     <div className="App">
-      <ul>
-        <li>{dados}</li>
-      </ul>
+    {values.map((item) =>
+          <ul>
+          <li>{item.code}</li>
+          <span>{item.name}</span>
+          <span>{item.high}</span>
+        </ul>
+    )}
+
     </div>
   );
 }
