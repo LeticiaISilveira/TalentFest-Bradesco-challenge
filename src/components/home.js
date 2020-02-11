@@ -6,6 +6,7 @@ import Card from './card';
 
 const Home = () => {
   const [dados, setDados] = useState([]);
+  const [dataValues, setDataValues] = useState([]);
 
   let dadosApi = "https://economia.awesomeapi.com.br/all/";
   useEffect(() => {
@@ -16,9 +17,15 @@ const Home = () => {
   
   const values = Object.values(dados)
 
-  const changeCoin = () => {
-    console.log(values.map((item) => item.high))
-
+  const changeCoin = (e) => {
+    const teste = values.map((item) => item.name)
+    setDataValues(teste)
+    
+    // const teste = values.map((item) => {
+    //   const name = item.name
+    // }
+    // setDataValues(teste)
+    // console.log(teste)
   };
 
   return (
@@ -39,7 +46,9 @@ const Home = () => {
       <Card>
         <SelectCoin onChange={changeCoin}
           values={values}
+          value={values.name}
         />
+       {dataValues}
       </Card>
     </>
   );
