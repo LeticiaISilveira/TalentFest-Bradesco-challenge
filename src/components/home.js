@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     margin: '30px',
     padding: '20px 20px 80px 20px',
     border: '2px solid red',
-    color: '#fff'
+    color: '#fff',
   },
   divDatas: {
     display: 'flex',

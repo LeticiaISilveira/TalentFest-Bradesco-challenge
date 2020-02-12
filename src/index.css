@@ -7,8 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #17212F;
   width: 100%;
-  display: flex;
-  justify-content: center;
+}
+
+.tradingview-widget-container {
+  padding: 20px;
 }
 
 code {
