@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import SelectCoin from './selectCoin';
 import Card from './card';
+import graphic from '../chart'
 import { StyleSheet, css } from 'aphrodite';
 
   const styles = StyleSheet.create({
@@ -48,6 +49,7 @@ const Home = () => {
     const coinFitered  = values.filter((item) => item.name === e.target.value)[0]
     console.log(coinFitered)
     setDataValues(coinFitered)
+    graphic(coinFitered.high)
   };
 
 
