@@ -20,26 +20,16 @@ const Home = () => {
       .then(res => setDados(res))
   }, []);
 
-
-
   const values = Object.values(dados)
 
   const changeCoin = (e) => {
     console.log(e.target.value)
-    const coinFitered = values.filter((item) => item.code === e.target.value)[0]
-    console.log(coinFitered.code);
+    const coinFitered = values.filter((item) => item.name === e.target.value)[0]
+    console.log(coinFitered.name);
     setDataValues(coinFitered);
     // return coinFitered;
     // setCode(coinFitered.code);
   };
-
-  // const urlStart = "https://economia.awesomeapi.com.br/json/list"
-  // const params = []
-  // params.push(changeCoin) //coin.code
-  // params.push('7')
-  // const url = urlStart + '/' + params.join('/')
-  // console.log(url)
-  // console.log(changeCoin);
 
   return (
     <>
@@ -55,3 +45,12 @@ const Home = () => {
 }
 
 export default Home;
+
+
+// const urlStart = "https://economia.awesomeapi.com.br/json/list"
+  // const params = []
+  // params.push(changeCoin) //coin.code
+  // params.push('7')
+  // const url = urlStart + '/' + params.join('/')
+  // console.log(url)
+  // console.log(changeCoin);

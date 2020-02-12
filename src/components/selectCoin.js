@@ -8,7 +8,7 @@ const SelectCoin = (props) => {
 		<div>
 			<select className={props.className} onChange={props.onChange}>
 				{values.map((coin, index) =>
-					<option value={coin.code} className={props.className} key={index}>{coin.code}
+					<option value={coin.name} className={props.className} key={index}>{coin.name}
 					</option>
 				)}
 			</select>
