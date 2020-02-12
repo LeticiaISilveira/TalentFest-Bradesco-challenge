@@ -5,14 +5,22 @@ import Card from './card';
 const Home = () => {
   const [dados, setDados] = useState([]);
   const [dataValues, setDataValues] = useState([]);
-  // const [code, setCode] = ([]);
+  const [code, setCode] = ([]);
 
   let dadosApi = "https://economia.awesomeapi.com.br/all/";
+
+  // useEffect(() => {
+  //   setCode([...changeCoin])
+  // }, [])
+
+
   useEffect(() => {
     fetch(dadosApi)
       .then(res => res.json())
       .then(res => setDados(res))
   }, []);
+
+
 
   const values = Object.values(dados)
 
@@ -23,20 +31,15 @@ const Home = () => {
     setDataValues(coinFitered);
     // return coinFitered;
     // setCode(coinFitered.code);
-
-    const urlStart = "https://economia.awesomeapi.com.br/json/list"
-    const params = []
-    params.push(coinFitered.code) //coin.code
-    params.push('7')
-    const url = urlStart + '/' + params.join('/')
-    console.log(url)
   };
 
-
-
-
-
-  console.log(changeCoin);
+  // const urlStart = "https://economia.awesomeapi.com.br/json/list"
+  // const params = []
+  // params.push(changeCoin) //coin.code
+  // params.push('7')
+  // const url = urlStart + '/' + params.join('/')
+  // console.log(url)
+  // console.log(changeCoin);
 
   return (
     <>

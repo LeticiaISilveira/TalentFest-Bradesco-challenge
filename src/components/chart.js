@@ -27,6 +27,18 @@ const Chart = () => {
 
   console.log(data)
 
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <Card>
