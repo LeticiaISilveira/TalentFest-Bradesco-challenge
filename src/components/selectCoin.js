@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 const SelectCoin = (props) => {
 
 	const values = props.values;
-
+  
 	return ( <
 		div className = {
 			css(styles.selectDiv)
