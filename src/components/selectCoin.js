@@ -27,35 +27,17 @@ const SelectCoin = (props) => {
 
 	const values = props.values;
 
-	return ( <
-		div className = {
-			css(styles.selectDiv)
-		} >
-		<
-		select className = {
-			css(styles.select)
-		}
-		onChange = {
-			props.onChange
-		} > {
+	return (
+		<div className = {css(styles.selectDiv)}>
+		<select className = {css(styles.select)} onChange = {props.onChange}>
+			{
 			values.map((coin, index) =>
-				<
-				option value = {
-					coin.name
-				}
-				className = {
-					props.className
-				}
-				key = {
-					index
-				} > {
-					coin.name
-				} <
-				/option>                        
+				<option value = {coin.name}	className = {props.className} key = {index} >
+					{coin.name}
+				</option>                        
 			)
-		} <
-		/select> < /
-		div >
+		} </select>
+		</div >
 	)
 }
 
