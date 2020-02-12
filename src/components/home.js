@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import SelectCoin from './selectCoin';
 import Card from './card';
-// import SelectCoin from './selectCoin';
 
 
 const Home = () => {
@@ -13,20 +12,20 @@ const Home = () => {
     fetch(dadosApi)
       .then(res => res.json())
       .then(res => setDados(res))
-    }, []);
+    },[] );
   
   const values = Object.values(dados)
+  // console.log(values)
 
   const changeCoin = (e) => {
-    const teste = values.map((item) => item.name)
-    setDataValues(teste)
-    
-    // const teste = values.map((item) => {
-    //   const name = item.name
-    // }
-    // setDataValues(teste)
-    // console.log(teste)
+    // const teste = values.map((item) => console.log(item))
+    console.log(e.target.value)
+    const coinFitered  = values.filter((item) => item.name === e.target.value)
+    console.log(coinFitered)
+    setDataValues(coinFitered)
+    // console.log(dataValues)
   };
+
 
   return (
     <>
@@ -46,9 +45,8 @@ const Home = () => {
       <Card>
         <SelectCoin onChange={changeCoin}
           values={values}
-          value={values.name}
         />
-       {dataValues}
+        {/* {dataValues} */}
       </Card>
     </>
   );
