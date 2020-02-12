@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import SelectCoin from './selectCoin';
 import Card from './card';
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, LineChart, Line } from 'recharts';
+import { StyleSheet, css } from 'aphrodite';
 
-am4core.useTheme(am4themes_animated);
 
-// const urlStart = "https://economia.awesomeapi.com.br/json/list"
-// const params = []
-// params.push('dataValues')
-// params.push('7')
-// url = urlStart + '/'
-// console.log(url)
+const styles = StyleSheet.create({
+  card: {
+    background: '#1E2938',
+    margin: '30px',
+    borderRadius: '10px',
+    padding: '10px',
+    color: '#fff',
+    padding: '10px',
+    boxShadow: '5px 5px 5px #555',
+  },
+  title: {
+    padding: "5px"
+  }
+}
+)
 
 const Chart = () => {
   const [data, setData] = useState([]);
 
-  let historyAPI = "https://economia.awesomeapi.com.br/json/list/USD-BRL/7";
+  let historyAPI = "https://economia.awesomeapi.com.br/json/list/USD-BRL/15";
 
   useEffect(() => {
     fetch(historyAPI)
@@ -25,23 +31,24 @@ const Chart = () => {
       .then(res => setData(res))
   }, []);
 
-  console.log(data)
 
-
-
-
-
-
-
-
-
-
-
-
+  const timeStamp = data.map((item) => {
+      const time = new Date(Number(item.timestamp))
+      return time
+    }
+    )
 
   return (
     <>
-      <Card>
+      <Card className={css(styles.card)}>
+        <h3 className={css(styles.title)}>Variação Dólar Comercial</h3>
+    <LineChart width={550} height={300} data={data}>
+    <Line type="monotone" dataKey="high" stroke="#42FF11" />
+    <CartesianGrid stroke="#1E2939" />
+    <XAxis dataKey={timeStamp} />
+    <YAxis />
+  </LineChart>
+      <p>15 Dias</p>
       </Card>
     </>
   );

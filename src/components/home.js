@@ -3,6 +3,7 @@ import SelectCoin from './selectCoin';
 import Card from './card';
 import { StyleSheet, css } from 'aphrodite';
 
+
   const styles = StyleSheet.create({
     card: {
       background: '#1E2938',
@@ -36,11 +37,6 @@ const Home = () => {
 
   let dadosApi = "https://economia.awesomeapi.com.br/all/";
 
-  // useEffect(() => {
-  //   setCode([...changeCoin])
-  // }, [])
-
-
   useEffect(() => {
     fetch(dadosApi)
       .then(res => res.json())
@@ -50,12 +46,10 @@ const Home = () => {
   const values = Object.values(dados)
 
   const changeCoin = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     const coinFitered = values.filter((item) => item.name === e.target.value)[0]
-    console.log(coinFitered.name);
+    // console.log(coinFitered.name);
     setDataValues(coinFitered);
-    // return coinFitered;
-    // setCode(coinFitered.code);
   };
 
   return (
@@ -70,6 +64,7 @@ const Home = () => {
           <p className={css(styles.border)}>Ptc Var : {dataValues.pctChange}</p>
         </div>
       </Card>
+    
     </>
   );
 }

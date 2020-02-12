@@ -24,38 +24,25 @@ const styles = StyleSheet.create({
 })
 
 const SelectCoin = (props) => {
-
 	const values = props.values;
   
-	return ( <
-		div className = {
+	return (
+		 <div className = {
 			css(styles.selectDiv)
-		} >
-		<
-		select className = {
+	 }>
+		<select className = {
 			css(styles.select)
 		}
 		onChange = {
 			props.onChange
 		} > {
 			values.map((coin, index) =>
-				<
-				option value = {
-					coin.name
-				}
-				className = {
-					props.className
-				}
-				key = {
-					index
-				} > {
-					coin.name
-				} <
-				/option>                        
+				<option value = {coin.name}	className = {props.className}
+				key = {index}> {coin.name} 
+				</option>                        
 			)
-		} <
-		/select> < /
-		div >
+		} </select> 
+		</div >
 	)
 }
 
