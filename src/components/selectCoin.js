@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
- 
+
 const SelectCoin = (props) => {
 	const values = props.values;
 
-	return(
+	return (
 		<div>
 			<select className={props.className} onChange={props.onChange}>
-				{values.map((coin, index) => 
-					<option value={coin.name} className={props.className} key={index}>{coin.name}
-					</option>                        
+				{values.map((coin, index) =>
+					<option value={coin.code} className={props.className} key={index}>{coin.code}
+					</option>
 				)}
-				</select>
+			</select>
 		</div>
 	)
 

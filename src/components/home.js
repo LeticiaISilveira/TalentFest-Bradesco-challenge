@@ -1,50 +1,51 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import SelectCoin from './selectCoin';
 import Card from './card';
-
 
 const Home = () => {
   const [dados, setDados] = useState([]);
   const [dataValues, setDataValues] = useState([]);
+  // const [code, setCode] = ([]);
 
   let dadosApi = "https://economia.awesomeapi.com.br/all/";
   useEffect(() => {
     fetch(dadosApi)
       .then(res => res.json())
       .then(res => setDados(res))
-    },[] );
-  
+  }, []);
+
   const values = Object.values(dados)
 
   const changeCoin = (e) => {
     console.log(e.target.value)
-    const coinFitered  = values.filter((item) => item.name === e.target.value)[0]
-    console.log(coinFitered)
-    setDataValues(coinFitered)
+    const coinFitered = values.filter((item) => item.code === e.target.value)[0]
+    console.log(coinFitered.code);
+    setDataValues(coinFitered);
+    // return coinFitered;
+    // setCode(coinFitered.code);
+
+    const urlStart = "https://economia.awesomeapi.com.br/json/list"
+    const params = []
+    params.push(coinFitered.code) //coin.code
+    params.push('7')
+    const url = urlStart + '/' + params.join('/')
+    console.log(url)
   };
 
 
+
+
+
+  console.log(changeCoin);
+
   return (
     <>
-    {/* {values.map((item) =>
-      <ul>
-        <li>{item.name}</li>
-        <span>{item.code}</span>
-        <span>{item.high}</span>
-      </ul>
-    )} */}
-
-    {/* <select>
-      {values.map((item) =>
-        <option>{item.name}</option>
-      )}
-    </select> */}
       <Card>
         <SelectCoin onChange={changeCoin}
           values={values}
         />
-       <p>{dataValues.name}</p>
-       <p>{dataValues.high}</p>
+        <p>{dataValues.name}</p>
+        <p>{dataValues.high}</p>
       </Card>
     </>
   );
