@@ -1,6 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import SelectCoin from './selectCoin';
 import Card from './card';
+import { StyleSheet, css } from 'aphrodite';
+
+  const styles = StyleSheet.create({
+    card: {
+      background: '#1E2938',
+      margin: '30px',
+      borderRadius: '10px',
+      padding: '10px',
+      color: '#fff',
+      padding: '10px',
+      boxShadow: '5px 5px 5px #555'
+    },
+    divDatas: {
+      display: 'flex',
+      fontSize:'30px',
+      padding:'10px',
+      justifyContent: 'center'
+    },
+    border: {
+      display: 'inline'
+    },
+    textsDiv: {
+      display:'flex',
+      padding: '3px',
+      justifyContent: 'space-around'
+    }
+  })
 
 
 const Home = () => {
@@ -26,25 +53,15 @@ const Home = () => {
 
   return (
     <>
-    {/* {values.map((item) =>
-      <ul>
-        <li>{item.name}</li>
-        <span>{item.code}</span>
-        <span>{item.high}</span>
-      </ul>
-    )} */}
-
-    {/* <select>
-      {values.map((item) =>
-        <option>{item.name}</option>
-      )}
-    </select> */}
-      <Card>
+      <Card className={css(styles.card)}>
         <SelectCoin onChange={changeCoin}
           values={values}
         />
-       <p>{dataValues.name}</p>
-       <p>{dataValues.high}</p>
+        <p className={css(styles.divDatas)}>{dataValues.code} {dataValues.high}</p>
+        <div className={css(styles.textsDiv)}>
+          <p className={css(styles.border)}>Var : {dataValues.varBid}</p>
+          <p className={css(styles.border)}>Ptc Var : {dataValues.pctChange}</p>
+        </div>
       </Card>
     </>
   );
