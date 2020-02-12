@@ -15,15 +15,12 @@ const Home = () => {
     },[] );
   
   const values = Object.values(dados)
-  // console.log(values)
 
   const changeCoin = (e) => {
-    // const teste = values.map((item) => console.log(item))
     console.log(e.target.value)
-    const coinFitered  = values.filter((item) => item.name === e.target.value)
+    const coinFitered  = values.filter((item) => item.name === e.target.value)[0]
     console.log(coinFitered)
     setDataValues(coinFitered)
-    // console.log(dataValues)
   };
 
 
@@ -46,7 +43,8 @@ const Home = () => {
         <SelectCoin onChange={changeCoin}
           values={values}
         />
-        {/* {dataValues} */}
+       <p>{dataValues.name}</p>
+       <p>{dataValues.high}</p>
       </Card>
     </>
   );
